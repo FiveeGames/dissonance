@@ -5,13 +5,15 @@ using System.Collections.Generic;
 public class Patient : MonoBehaviour
 {
     [Header("Assigned Diseases")]
-    public List<DiseaseData> diseases = new();
+    public List<DiseaseInstance> diseases = new();
+
+    public List<SymptomType> currentSymptoms = new List<SymptomType>();
 
     [Header("State")]
     public PatientState currentState;
 
     private NavMeshAgent agent;
-    private List<SymptomType> revealedSymptoms = new();
+    public List<SymptomType> revealedSymptoms = new();
 
     void Awake()
     {
@@ -29,16 +31,18 @@ public class Patient : MonoBehaviour
     {
         foreach (var disease in diseases)
         {
+            var data = disease.data;
+
             // TRUE symptom
-            if (Random.value < disease.baseRevealChance && disease.trueSymptoms.Count > 0)
+            if (Random.value < data.baseRevealChance && data.trueSymptoms.Count > 0)
             {
-                AddSymptom(disease.trueSymptoms[Random.Range(0, disease.trueSymptoms.Count)]);
+                AddSymptom(data.trueSymptoms[Random.Range(0, data.trueSymptoms.Count)]);
             }
 
             // FAKE symptom
-            if (Random.value < 0.15f && disease.possibleFakeSymptoms.Count > 0)
+            if (Random.value < 0.15f && data.possibleFakeSymptoms.Count > 0)
             {
-                AddSymptom(disease.possibleFakeSymptoms[Random.Range(0, disease.possibleFakeSymptoms.Count)]);
+                AddSymptom(data.possibleFakeSymptoms[Random.Range(0, data.possibleFakeSymptoms.Count)]);
             }
         }
     }
@@ -47,9 +51,11 @@ public class Patient : MonoBehaviour
     {
         foreach (var disease in diseases)
         {
-            if (disease.hiddenSymptoms.Count > 0)
+            var data = disease.data;
+
+            if (data.hiddenSymptoms.Count > 0)
             {
-                AddSymptom(disease.hiddenSymptoms[Random.Range(0, disease.hiddenSymptoms.Count)]);
+                AddSymptom(data.hiddenSymptoms[Random.Range(0, data.hiddenSymptoms.Count)]);
             }
         }
     }

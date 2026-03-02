@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Social Anxiety
   m_EditorClassIdentifier: Assembly-CSharp::DiseaseData
   diseaseName: Social Anxiety
-  trueSymptoms: 01000000
-  possibleFakeSymptoms: 02000000
-  hiddenSymptoms: 05000000
-  baseRevealChance: 0.8
+  trueSymptoms: 060000000800000007000000
+  possibleFakeSymptoms: 0f000000
+  hiddenSymptoms: 09000000
+  baseRevealChance: 0.47
