@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Schizophrenia
   m_EditorClassIdentifier: Assembly-CSharp::DiseaseData
   diseaseName: Schizophrenia
-  trueSymptoms: 0000000004000000
-  possibleFakeSymptoms: 05000000
-  hiddenSymptoms: 02000000
+  trueSymptoms: 0200000003000000050000000f000000
+  possibleFakeSymptoms: 090000000a000000
+  hiddenSymptoms: 0100000004000000
   baseRevealChance: 0.8
